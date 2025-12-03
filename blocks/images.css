@@ -1,0 +1,21 @@
+.modal__image-container {
+  position: relative;
+  
+  max-height: 75vh;
+}
+
+.modal__image {
+  
+  max-height: 75vh;
+}
+
+@media screen and (min-width: 320px) and (max-width: 544px) {
+  .modal__image-container {
+    max-width: 270px;
+    max-height: 300px;
+  }
+
+  .modal__image {
+    width: 100%;
+  }
+}
