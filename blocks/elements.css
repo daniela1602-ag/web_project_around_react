@@ -50,9 +50,20 @@
 }
 
 .elements__card-image-button {
+  background-image: url(../images/vectorcorazon.svg);
   border: none;
   cursor: pointer;
-  flex-shrink: 0;
+  width: 22px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+
+}
+
+.elements__card-image-button--active {
+  background-image: url(../images/vectorblack.svg);
 }
 
 .elements__card-image-button:hover {
@@ -74,8 +85,11 @@
 }
 
 @media screen and (min-width: 544px) and (max-width: 1024px) {
-  .elements__card-image-button {
+  .elements__container {
+    padding: 0;
   }
+
+
 }
 
 @media screen and (min-width: 320px) and (max-width: 544px) {
@@ -83,5 +97,6 @@
     width: 282px;
     display: grid;
     grid-template-columns: 282px;
+    padding: 0;
   }
 }

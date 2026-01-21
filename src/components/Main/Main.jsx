@@ -5,55 +5,41 @@ import NewCard from './components/form/NewCard/NewCard';
 import EditProfile from './components/form/EditProfile/EditProfile';
 import EditAvatar from './components/form/EditAvatar/EditAvatar';
 import ImagePopup from './components/ImagePopup/ImagePopup';
-import { useState } from "react";
+import api from '../../utils/api';
+import { useState, useEffect, useContext,  } from "react";
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-const cards = [
-  {
-    isLiked: false,
-    _id: '5d1f0611d321eb4bdcd707dd',
-    name: 'Yosemite Valley',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:10:57.741Z',
-  },
-  {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bdcd707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-];
-console.log(cards);
 
-function Main() {
-    const [popup, setPopup] = useState(null);
+
+
+
+function Main({ onOpenPopup, onClosePopup, popup, cards, onCardLike, onCardDelete, onAddPlaceSubmit}) {
+
+    const { currentUser } = useContext(CurrentUserContext);
+    
     //objetos para cada
-    const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+    const newCardPopup = { title: "Nuevo lugar", children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit}/> };
     const editProfilePopup = { title: "Editar perfil", children: <EditProfile /> };
     const editAvatarPopup = { title: "Cambiar foto de perfil", children: <EditAvatar /> };
-    
-     
-    //funciones para manejar los popups
-    function handleOpenPopup(popup) {
-    setPopup(popup);
-}
 
-    function handleClosePopup() {
-    setPopup(null);
     
-} 
 
   return (
     <main className="content">
-      <Profile onEditProfile={() => handleOpenPopup(editProfilePopup)} 
-        onEditAvatar={() => handleOpenPopup(editAvatarPopup)} 
-        onAddCard={() => handleOpenPopup(newCardPopup)} />
-      <Elements cards={cards} onImageClick={handleOpenPopup} />
+      <Profile 
+        onEditProfile={() => onOpenPopup(editProfilePopup)} 
+        onEditAvatar={() => onOpenPopup(editAvatarPopup)} 
+        onAddCard={() => onOpenPopup(newCardPopup)} />
+      <Elements 
+       cards={cards}
+       onImageClick={onOpenPopup}
+       onCardLike={onCardLike} 
+       onCardDelete={onCardDelete}
+       
+       />
 
       {popup && (
-        <Popup onClose={handleClosePopup} title={popup.title}>
+        <Popup onClose={onClosePopup} title={popup.title}>
           {popup.children}
         </Popup>
       )}

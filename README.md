@@ -1,9 +1,16 @@
 Proyecto: Around The US - React
+Red social para compartir fotos de lugares.
 
 Este proyecto es la transferencia del sitio web "Around The US" de JavaScript vanilla a React, utilizando Vite como herramienta de construcción.
 Las funcionalidades implementadas son: configuración del proyecto, transferencia de contenido, componentes creados.
 Funcionalidades: visualización de tarjetas iniciales , apertura de popup de imagen al hacer click en una tarjeta , Popups de formularios (editar perfil y crear tarjetas) y cierre correcto de todos los popups.
 Tecnologías utilizadas: React, Vite, CSS3 y JavaScript ES6+.
+
+Segunda parte del proyecto: 
+En esta segunda parte conectamos la aplicación a la API, se le dió funcionalidad a la edicion de avatar, perfil y creación de nuevas tarjetas, gestión likes y eliminación de cada tarjeta y de igual forma, se conectaron a la API, se actualizaron los datos ya guardados de la API.
+Tecnologias aplicadas: se utilizaron Hook, específicamente useState, useEffect, useRef, useContext.
+En esta esta etapa, para EditProfile utilicé la gestión de componentes con useState como herramienta, y en EditAvatar utilicé useRef como herramienta, para obtener la información del usuario de la api utilicé useEffect y para dar esa información para varios componente utilicé useContext.
+React + Vite, JavaScript ES6+, CSS3 y API REST.
 
 
 

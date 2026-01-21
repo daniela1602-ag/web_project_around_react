@@ -1,12 +1,35 @@
-export default function NewCard() {
+import { useState } from "react";
+
+
+export default function NewCard({ onAddPlaceSubmit }) {
+  
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+  const handleLinkChange = (event) => {
+    setLink(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onAddPlaceSubmit({ name: title, link: link });
+  }
     return (
-        <form id="popupEditImg" className="modal__profile-form" noValidate>
+        <form 
+          id="popupEditImg" 
+          className="modal__profile-form" 
+          onSubmit={handleSubmit}
+          noValidate>
             <div>
               <label htmlFor="title"
                 >Titulo
                 <input
                   type="text"
                   id="title"
+                  onChange={handleTitleChange}
                   name="title"
                   placeholder="Titulo"
                   className="modal__profile-input"
@@ -21,6 +44,7 @@ export default function NewCard() {
               <label htmlFor="imgLink">Enlace a la imagen</label>
               <input
                 type="url"
+                onChange={handleLinkChange}
                 id="imgLink"
                 name="imgLink"
                 placeholder="Enlace a la imagen"

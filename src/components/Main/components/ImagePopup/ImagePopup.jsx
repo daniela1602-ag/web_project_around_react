@@ -4,7 +4,7 @@ function ImagePopup(props){
 
     return (
      
-          <img className="elements__image" src={link} alt={name} />
+          <img className="modal__image" src={link} alt={name} />
           
      
     );

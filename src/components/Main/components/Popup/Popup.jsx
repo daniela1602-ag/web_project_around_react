@@ -3,10 +3,11 @@ export default function Popup(props) {
   const { onClose, title, children} = props;
   return (
     <div id="modal" className="modal">
-        <div className={`modal__image-container ${
-          !title ? "modal__image" : "modal__content"
-        }`}
-        >
+        <div className={
+          !title
+          ? "modal__image-container modal__image"
+          : "modal__container modal__content"
+        }>
           <img
             id="closeModal"
             className="modal__close-icon"
